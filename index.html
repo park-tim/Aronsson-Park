@@ -48,6 +48,19 @@
             transform: rotate(0deg);
         }
 
+        /* Grundinställning för alla sidor */
+        .page {
+            display: none;
+            padding-top: 160px;
+            /* Ger plats åt menyn + luft för rubriken */
+            padding-bottom: 40px;
+            /* Lagom glapp ner till footern */
+        }
+
+        /* Specialare för startsidan så den inte hamnar för långt ner */
+        #home {
+            padding-top: 100px;
+        }
 
 
         @keyframes fadeIn {
@@ -269,7 +282,7 @@
         </section>
     </main>
 
-    <footer class="max-w-5xl mx-auto px-6 py-20 border-t border-white/5 flex flex-col items-center gap-10 mb-48">
+    <footer class="max-w-5xl mx-auto px-6 py-12 border-t border-white/5 flex flex-col items-center gap-8 mb-12">
         <a href="https://www.instagram.com/aronssonochpark/" target="_blank"
             class="group flex flex-col items-center gap-3">
             <div
