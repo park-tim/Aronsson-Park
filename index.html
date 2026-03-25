@@ -15,6 +15,8 @@
             background-color: #0a0a0a;
         }
 
+
+
         .glass {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(15px);
@@ -46,6 +48,8 @@
             transform: rotate(0deg);
         }
 
+
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -72,6 +76,7 @@
             100% {
                 transform: translateY(0);
             }
+
         }
 
         .animate-bounce-in {
@@ -87,15 +92,27 @@
             <div onclick="showPage('home')" class="flex items-center gap-3 cursor-pointer group">
                 <img src="aronsson_park.png" alt="Aronsson & Park Logga"
                     class="h-12 w-auto object-contain transition-opacity group-hover:opacity-80">
-                <span class="font-black text-2xl tracking-tighter italic text-white hidden md:block uppercase">
+                <span
+                    class="font-black text-2xl tracking-tighter italic text-white hidden md:block uppercase leading-none">
                     <span class="text-[#0d8e85]">Aronsson</span> <span class="text-white">&</span> Park
                 </span>
             </div>
 
-            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest text-zinc-300">
+            <div
+                class="flex items-center gap-5 md:gap-8 text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-300">
                 <button onclick="showPage('home')" class="hover:text-[#0d8e85] transition">Hem</button>
                 <button onclick="showPage('episodes')" class="hover:text-[#0d8e85] transition">Avsnitt</button>
                 <button onclick="showPage('about')" class="hover:text-[#0d8e85] transition">Om oss</button>
+
+                <a href="https://www.instagram.com/aronssonochpark/" target="_blank"
+                    class="text-zinc-400 hover:text-[#f0c436] transition-all transform hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                </a>
             </div>
         </div>
     </nav>
@@ -105,17 +122,31 @@
         <section id="home" class="page active">
             <div class="grid md:grid-cols-2 gap-12 items-center text-center md:text-left">
                 <div>
-                    <span class="text-[#f0c436] font-bold tracking-widest text-xs uppercase">Nytt avsnitt släpps 2/4
-                    </span>
+                    <div class="flex items-center justify-center md:justify-start mb-6">
+                        <div
+                            class="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md shadow-[0_0_20px_rgba(255,77,77,0.15)]">
+
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff4d4d] opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#ff4d4d]"></span>
+                            </span>
+
+                            <span
+                                class="text-[#f0c436] font-black tracking-[0.2em] text-[10px] uppercase italic leading-none">
+                                Nästa avsnitt <span class="text-white mx-1">•</span> 2 April
+                            </span>
+                        </div>
+                    </div>
                     <h1 class="text-6xl font-black mt-6 leading-none italic uppercase tracking-tighter text-white">
-                        Lyssna på <br><span class="text-[#0d8e85]">oss.</span></h1>
+                        Lyssna på <br><span class="text-[#0d8e85]">oss!</span></h1>
                     <p
                         class="mt-8 text-zinc-400 text-lg leading-relaxed italic max-w-2xl mx-auto uppercase tracking-wide">
-                        "Ishockey och Tennis, världens bästa kombo, om ni frågar oss !"</p>
+                        "Ishockey och tennis – världens bästa kombo, om ni frågar oss. !"</p>
                     <div class="mt-10">
                         <button onclick="showPage('episodes')"
-                            class="bg-[#f0c436] text-black px-12 py-5 rounded-full font-black hover:bg-white transition shadow-2xl uppercase text-xs tracking-widest">Öppna
-                            Arkivet</button>
+                            class="bg-[#f0c436] text-black px-12 py-5 rounded-full font-black hover:bg-white transition shadow-2xl uppercase text-xs tracking-widest">Här
+                            finns alla avsnitt!</button>
                     </div>
                 </div>
                 <div class="relative flex justify-center flex-col items-center">
@@ -147,33 +178,72 @@
 
         <section id="about" class="page">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-5xl font-black mb-12 italic uppercase tracking-tighter text-white">Bakom Micken</h2>
+                <h2 class="text-5xl font-black mb-12 italic uppercase tracking-tighter text-white">Vi som rattar podden!
+                </h2>
 
                 <div class="flex flex-wrap gap-12 md:gap-20 mt-16 justify-center">
+
                     <div class="text-center group">
                         <div
                             class="w-36 h-36 bg-zinc-800 rounded-full mb-6 mx-auto overflow-hidden border-4 border-[#0d8e85] shadow-2xl shadow-[#0d8e85]/20 transition-transform group-hover:scale-105">
-                            <img src="-">
+                            <img src="emil.png"> <!--bild på emil-->
+
                         </div>
                         <p class="font-black uppercase text-xs tracking-[0.4em] text-white">Emil Aronsson</p>
-                        <p class="text-[10px] text-[#0d8e85] font-bold uppercase tracking-widest mt-1">Grundare</p>
+
+                        <a href="https://www.instagram.com/emilaronssonprivat/" target="_blank"
+                            class="mt-4 inline-block relative">
+                            <div
+                                class="absolute -inset-2 bg-[#0d8e85] rounded-full blur-md opacity-0 group-hover:opacity-50 group-hover:animate-pulse transition-opacity">
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="#0d8e85" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="relative z-10 transition-all group-hover:scale-110 group-hover:stroke-white">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                            </svg>
+                        </a>
                     </div>
+
                     <div class="text-center group">
                         <div
                             class="w-36 h-36 bg-zinc-800 rounded-full mb-6 mx-auto overflow-hidden border-4 border-[#f0c436] shadow-2xl shadow-[#f0c436]/20 transition-transform group-hover:scale-105">
                             <img src="tim.jpg" alt="Tim">
                         </div>
                         <p class="font-black uppercase text-xs tracking-[0.4em] text-white">Tim Park</p>
-                        <p class="text-[10px] text-[#f0c436] font-bold uppercase tracking-widest mt-1">Grundare</p>
+
+                        <a href="https://www.instagram.com/timparkprivat/" target="_blank"
+                            class="mt-4 inline-block relative">
+                            <div
+                                class="absolute -inset-2 bg-[#f0c436] rounded-full blur-md opacity-0 group-hover:opacity-50 group-hover:animate-pulse transition-opacity">
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="#f0c436" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="relative z-10 transition-all group-hover:scale-110 group-hover:stroke-white">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
-                <div class="mt-20 text-left glass-card p-10 md:p-16 rounded-[2.5rem] relative">
-                    <i data-lucide="quote" class="absolute top-8 left-8 w-12 h-12 text-[#0d8e85]/20"></i>
+                <div
+                    class="mt-20 text-left glass-card p-10 md:p-16 rounded-[2.5rem] relative bg-white/5 border border-white/10">
+                    <div class="absolute top-8 left-8 opacity-20 text-[#0d8e85]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.154c-2.413.912-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                        </svg>
+                    </div>
 
                     <div class="relative z-10">
-                        <h4 class="text-[#f0c436] font-black uppercase tracking-widest text-xs mb-6">Historia</h4>
-                        <div class="space-y-6 text-zinc-300 text-lg leading-relaxed italic italic font-light">
+                        <h3 class="text-[#f0c436] font-black uppercase tracking-widest text-xs mb-6">Vår Historia</h3>
+                        <div class="space-y-6 text-zinc-300 text-lg leading-relaxed italic font-light">
                             <p>
                                 Det som började som ett enkelt samtal över en kaffe om gårdagens matcher förvandlades
                                 snabbt till något större. Aronsson & Park föddes ur passionen för sportens värld – där
@@ -199,12 +269,25 @@
         </section>
     </main>
 
-    <footer
-        class="max-w-5xl mx-auto px-6 py-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 mb-48">
-        <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">© 2026 ARONSSON <span
-                class="text-zinc-600">&</span> PARK.</p>
+    <footer class="max-w-5xl mx-auto px-6 py-20 border-t border-white/5 flex flex-col items-center gap-10 mb-48">
+        <a href="https://www.instagram.com/aronssonochpark/" target="_blank"
+            class="group flex flex-col items-center gap-3">
+            <div
+                class="p-4 rounded-full bg-white/5 border border-white/10 group-hover:border-[#f0c436] group-hover:bg-[#f0c436]/10 transition-all duration-500 shadow-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-zinc-400 group-hover:text-[#f0c436] transition-colors">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+            </div>
+            <span
+                class="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-500 group-hover:text-white transition-colors">@aronssonochpark</span>
+        </a>
+        <p class="text-zinc-600 text-[10px] font-bold uppercase tracking-[0.3em]">© 2026 ARONSSON <span
+                class="text-zinc-700">&</span> PARK.</p>
     </footer>
-
     <div class="fixed bottom-0 left-0 w-full p-6 z-[100] animate-bounce-in">
         <div class="max-w-4xl mx-auto relative group">
             <div
