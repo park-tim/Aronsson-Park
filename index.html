@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast | Aronsson & Park</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+        }
+
+        .glass {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border-b: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* För textfältet i Om Oss */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .hover-rotate {
+            transform: rotate(2deg);
+            transition: transform 0.5s ease-out;
+        }
+
+        .hover-rotate:hover {
+            transform: rotate(0deg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(-8px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .animate-bounce-in {
+            animation: bounce-in 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+
+<body class="text-zinc-100 min-h-screen">
+
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div onclick="showPage('home')" class="flex items-center gap-3 cursor-pointer group">
+                <img src="aronsson_park.png" alt="Aronsson & Park Logga"
+                    class="h-12 w-auto object-contain transition-opacity group-hover:opacity-80">
+                <span class="font-black text-2xl tracking-tighter italic text-white hidden md:block uppercase">
+                    <span class="text-[#0d8e85]">Aronsson</span> <span class="text-white">&</span> Park
+                </span>
+            </div>
+
+            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest text-zinc-300">
+                <button onclick="showPage('home')" class="hover:text-[#0d8e85] transition">Hem</button>
+                <button onclick="showPage('episodes')" class="hover:text-[#0d8e85] transition">Avsnitt</button>
+                <button onclick="showPage('about')" class="hover:text-[#0d8e85] transition">Om oss</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 pt-40 pb-64">
+
+        <section id="home" class="page active">
+            <div class="grid md:grid-cols-2 gap-12 items-center text-center md:text-left">
+                <div>
+                    <span class="text-[#f0c436] font-bold tracking-widest text-xs uppercase">Nytt avsnitt ute nu</span>
+                    <h1 class="text-6xl font-black mt-6 leading-none italic uppercase tracking-tighter text-white">
+                        Lyssna på <br><span class="text-[#0d8e85]">oss.</span></h1>
+                    <p
+                        class="mt-8 text-zinc-400 text-lg leading-relaxed italic max-w-2xl mx-auto uppercase tracking-wide">
+                        "Ishockey och Tennis, världens bästa kombo, om ni frågar oss !"</p>
+                    <div class="mt-10">
+                        <button onclick="showPage('episodes')"
+                            class="bg-[#f0c436] text-black px-12 py-5 rounded-full font-black hover:bg-white transition shadow-2xl uppercase text-xs tracking-widest">Öppna
+                            Arkivet</button>
+                    </div>
+                </div>
+                <div class="relative flex justify-center flex-col items-center">
+                    <div class="absolute -inset-10 bg-[#0d8e85]/20 blur-[100px] rounded-full"></div>
+                    <img src="aronsson_park.png" alt="Aronsson & Park Logga"
+                        class="hover-rotate relative rounded-3xl shadow-2xl border border-white/10 w-full max-w-md mx-auto object-contain">
+                </div>
+            </div>
+        </section>
+
+        <section id="episodes" class="page">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="text-5xl font-black italic uppercase tracking-tighter text-white">Alla Avsnitt</h2>
+                <div class="flex items-center gap-3 px-5 py-3 bg-white/5 rounded-full border border-white/10">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute h-full w-full rounded-full bg-[#f0c436] opacity-75"></span>
+                        <span class="relative rounded-full h-3 w-3 bg-[#f0c436]"></span>
+                    </span>
+                    <span class="text-zinc-400 text-[11px] font-bold uppercase tracking-widest">Acast Feed</span>
+                </div>
+            </div>
+
+            <div class="glass rounded-[3rem] overflow-hidden shadow-2xl bg-black">
+                <iframe src="https://embed.acast.com/$/6004a4bc69c34c7ce9cdc803?feed=true" frameBorder="0" width="100%"
+                    height="700px" allow="autoplay" style="border:none; display:block;">
+                </iframe>
+            </div>
+        </section>
+
+        <section id="about" class="page">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-5xl font-black mb-12 italic uppercase tracking-tighter text-white">Bakom Micken</h2>
+
+                <div class="flex flex-wrap gap-12 md:gap-20 mt-16 justify-center">
+                    <div class="text-center group">
+                        <div
+                            class="w-36 h-36 bg-zinc-800 rounded-full mb-6 mx-auto overflow-hidden border-4 border-[#0d8e85] shadow-2xl shadow-[#0d8e85]/20 transition-transform group-hover:scale-105">
+                            <img src="-">
+                        </div>
+                        <p class="font-black uppercase text-xs tracking-[0.4em] text-white">Emil Aronsson</p>
+                        <p class="text-[10px] text-[#0d8e85] font-bold uppercase tracking-widest mt-1">Grundare</p>
+                    </div>
+                    <div class="text-center group">
+                        <div
+                            class="w-36 h-36 bg-zinc-800 rounded-full mb-6 mx-auto overflow-hidden border-4 border-[#f0c436] shadow-2xl shadow-[#f0c436]/20 transition-transform group-hover:scale-105">
+                            <img src="tim.jpg" alt="Tim">
+                        </div>
+                        <p class="font-black uppercase text-xs tracking-[0.4em] text-white">Tim Park</p>
+                        <p class="text-[10px] text-[#f0c436] font-bold uppercase tracking-widest mt-1">Grundare</p>
+                    </div>
+                </div>
+
+                <div class="mt-20 text-left glass-card p-10 md:p-16 rounded-[2.5rem] relative">
+                    <i data-lucide="quote" class="absolute top-8 left-8 w-12 h-12 text-[#0d8e85]/20"></i>
+
+                    <div class="relative z-10">
+                        <h4 class="text-[#f0c436] font-black uppercase tracking-widest text-xs mb-6">Historia</h4>
+                        <div class="space-y-6 text-zinc-300 text-lg leading-relaxed italic italic font-light">
+                            <p>
+                                Det som började som ett enkelt samtal över en kaffe om gårdagens matcher förvandlades
+                                snabbt till något större. Aronsson & Park föddes ur passionen för sportens värld – där
+                                ishockeyns råa energi möter tennisens mentala schackspel.
+                            </p>
+                            <p>
+                                Vi ville skapa en plattform där analys möter underhållning, utan filter. Genom att
+                                blanda djupa taktiska genomgångar med personliga anekdoter från läktaren strävar vi
+                                efter att vara din självklara röst i sportsverige.
+                            </p>
+                        </div>
+
+                        <div class="mt-10 pt-10 border-t border-white/5 flex items-center gap-4">
+                            <div class="h-[1px] w-12 bg-[#0d8e85]"></div>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">Tillsammans
+                                sedan 2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer
+        class="max-w-5xl mx-auto px-6 py-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 mb-48">
+        <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">© 2026 ARONSSON <span
+                class="text-zinc-600">&</span> PARK.</p>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 w-full p-6 z-[100] animate-bounce-in">
+        <div class="max-w-4xl mx-auto relative group">
+            <div
+                class="absolute -inset-1 bg-gradient-to-r from-[#0d8e85] to-[#f0c436] rounded-3xl blur opacity-15 group-hover:opacity-30 transition duration-1000">
+            </div>
+            <div class="relative glass border border-white/10 rounded-2xl overflow-hidden shadow-2xl bg-black">
+                <iframe src="https://embed.acast.com/$/6004a4bc69c34c7ce9cdc803/118-lat-dem-vifta?" frameBorder="0"
+                    width="100%" height="110px" allow="autoplay" style="display:block;">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+                window.location.hash = pageId;
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash.replace('#', '');
+            const validPages = ['home', 'episodes', 'about'];
+
+            if (hash && validPages.includes(hash)) {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
+        }
+
+        window.addEventListener('load', handleRouting);
+        window.addEventListener('popstate', handleRouting);
+    </script>
+</body>
+
+</html>
