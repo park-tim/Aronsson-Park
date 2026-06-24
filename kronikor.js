@@ -25,8 +25,8 @@ const kronikor = [
     id: "ishockey-och-tennis-varldens-basta-kombo",
     rubrik: "Ishockey och tennis – världens bästa kombo?",
     datum: "24 juni 2026",
-    forfatter: "Emil Aronsson",
-    intro: "Alla säger att man inte kan älska två sporter lika mycket. Vi bevisar motsatsen varje vecka.",
+    forfatter: "Emil Aronsson & Tim Park",
+    intro: "Alla säger att man inte kan älska två sporter lika mycket. Vi bevisar motsatsen varannan vecka.",
     bild: "aronsson_park.png",
     innehall: `
       <p>Det är en fråga vi får hela tiden: varför just ishockey och tennis? De verkar ju inte ha något gemensamt. Men det är precis där folk har fel.</p>
