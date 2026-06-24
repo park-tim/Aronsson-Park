@@ -775,33 +775,31 @@
     <div class="footer-copy">© 2026 Aronsson &amp; Park</div>
   </footer>
 
-  // Rendera krönikor
-  const kronikorGrid = document.getElementById('kronikor-grid');
-  if (typeof kronikor !== 'undefined' && kronikor.length > 0) {
-  kronikorGrid.innerHTML = kronikor.map(k => `
-  <a class="kronika-card" href="kronika.html?id=${k.id}">
-    ${k.bild
-    ? `<img src="${k.bild}" alt="${k.rubrik}" class="kronika-card-bild"
-      onerror="this.outerHTML='<div class=kronika-card-toppstripe></div>'">`
-    : '<div class="kronika-card-toppstripe"></div>'
-    }
-    <div class="kronika-card-body">
-      <div class="kronika-card-meta">${k.datum} · ${k.forfatter}</div>
-      <div class="kronika-card-rubrik">${k.rubrik}</div>
-      <p class="kronika-card-intro">${k.intro}</p>
-      <span class="kronika-card-las">Läs mer →</span>
-    </div>
-  </a>
-  `).join('');
-  } else {
-  kronikorGrid.innerHTML = '<p class="nyheter-tom">Inga krönikor ännu – kom tillbaka snart!</p>';
-  }
-
-
-
-
+  <script src="kronikor.js"></script>
   <script src="nyheter.js"></script>
   <script>
+    // Rendera krönikor
+    const kronikorGrid = document.getElementById('kronikor-grid');
+    if (typeof kronikor !== 'undefined' && kronikor.length > 0) {
+      kronikorGrid.innerHTML = kronikor.map(k => `
+        <a class="kronika-card" href="kronika.html?id=${k.id}">
+          ${k.bild
+          ? `<img src="${k.bild}" alt="${k.rubrik}" class="kronika-card-bild" onerror="this.outerHTML='<div class=kronika-card-toppstripe></div>'">`
+          : '<div class="kronika-card-toppstripe"></div>'
+        }
+          <div class="kronika-card-body">
+            <div class="kronika-card-meta">${k.datum} · ${k.forfatter}</div>
+            <div class="kronika-card-rubrik">${k.rubrik}</div>
+            <p class="kronika-card-intro">${k.intro}</p>
+            <span class="kronika-card-las">Läs mer →</span>
+          </div>
+        </a>
+      `).join('');
+    } else {
+      kronikorGrid.innerHTML = '<p class="nyheter-tom">Inga krönikor ännu – kom tillbaka snart!</p>';
+    }
+
+    // Rendera nyheter
     const grid = document.getElementById('nyheter-grid');
     if (typeof nyheter !== 'undefined' && nyheter.length > 0) {
       grid.innerHTML = nyheter.map(n => `
