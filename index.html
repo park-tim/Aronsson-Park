@@ -444,6 +444,79 @@
       color: rgba(240, 237, 230, 0.2);
     }
 
+
+    /* ── NYHETER ── */
+    #nyheter .nyheter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 960px;
+      margin-top: 8px;
+    }
+
+    .nyhet-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+
+    .nyhet-card:hover {
+      border-color: rgba(232, 76, 48, 0.4);
+    }
+
+    .nyhet-bild {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nyhet-bild-placeholder {
+      width: 100%;
+      height: 8px;
+      background: var(--red);
+    }
+
+    .nyhet-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nyhet-datum {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .nyhet-rubrik {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .nyhet-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .nyheter-tom {
+      color: var(--muted);
+      font-size: 14px;
+      padding: 20px 0;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       nav {
@@ -531,6 +604,14 @@
     <cite>— Aronsson &amp; Park</cite>
   </div>
 
+  <!-- NYHETER -->
+  <section id="nyheter">
+    <div class="section-label">Nyheter</div>
+    <div class="nyheter-grid" id="nyheter-grid">
+      <p class="nyheter-tom">Laddar nyheter...</p>
+    </div>
+  </section>
+
   <!-- AVSNITT (Acast full feed) -->
   <section id="avsnitt">
     <div class="section-label">Alla avsnitt</div>
@@ -606,6 +687,27 @@
     </ul>
     <div class="footer-copy">© 2026 Aronsson &amp; Park</div>
   </footer>
+  <script src="nyheter.js"></script>
+  <script>
+    const grid = document.getElementById('nyheter-grid');
+    if (typeof nyheter !== 'undefined' && nyheter.length > 0) {
+      grid.innerHTML = nyheter.map(n => `
+        <article class="nyhet-card">
+          ${n.bild
+          ? `<img src="${n.bild}" alt="${n.rubrik}" class="nyhet-bild" onerror="this.outerHTML='<div class=nyhet-bild-placeholder></div>'">`
+          : '<div class="nyhet-bild-placeholder"></div>'
+        }
+          <div class="nyhet-body">
+            <div class="nyhet-datum">${n.datum}</div>
+            <div class="nyhet-rubrik">${n.rubrik}</div>
+            <p class="nyhet-text">${n.text}</p>
+          </div>
+        </article>
+      `).join('');
+    } else {
+      grid.innerHTML = '<p class="nyheter-tom">Inga nyheter ännu – kom tillbaka snart!</p>';
+    }
+  </script>
 
 </body>
 
