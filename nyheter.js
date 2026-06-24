@@ -21,15 +21,10 @@ const nyheter = [
     rubrik: "Välkommen till vår nya hemsida! 🎉",
     datum: "24 juni 2026",
     text: "Vi har äntligen fått en snygg hemsida! Här kommer vi dela nyheter, tankar och allt annat vi inte hinner ta upp i podden. Följ med på resan!",
-    bild: "aronsson_park.png"
+    bild: ""
   },
 
-  {
-    rubrik: "Säsongen är igång – våra tips inför starten",
-    datum: "20 juni 2026",
-    text: "Äntligen dags igen! Emil och Tim delar sina varmaste tips inför den nya säsongen. Vem är favorit? Vem är mörkis? Lyssna på senaste avsnittet för hela analysen.",
-    bild: ""
-  }
+
 
   // ← Lägg till fler inlägg ovanför den här raden
 
