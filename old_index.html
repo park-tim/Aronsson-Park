@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aronsson & Park – Podcast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --red: #e84c30;
+            --bg: #0e0e0e;
+            --bg2: #111111;
+            --bg3: #161616;
+            --text: #f0ede6;
+            --muted: rgba(240, 237, 230, 0.5);
+            --dimmed: rgba(240, 237, 230, 0.25);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(14, 14, 14, 0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: 0.05em;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        .nav-cta {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 9px 22px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* ── HERO ── */
+        #home {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px 64px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(232, 76, 48, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(232, 76, 48, 0.07) 1px, transparent 1px);
+            background-size: 52px 52px;
+            pointer-events: none;
+        }
+
+        .hero-fade {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, var(--bg) 80%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            position: relative;
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--red);
+            border: 1px solid rgba(232, 76, 48, 0.4);
+            padding: 5px 16px;
+            border-radius: 2px;
+            margin-bottom: 28px;
+        }
+
+        .hero-logo {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--red);
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            position: relative;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(60px, 12vw, 110px);
+            line-height: 0.93;
+            letter-spacing: 0.02em;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        h1 em {
+            color: var(--red);
+            font-style: normal;
+        }
+
+        .hero-sub {
+            position: relative;
+            font-size: 17px;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            position: relative;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--dimmed);
+            padding: 14px 32px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: border-color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(240, 237, 230, 0.5);
+        }
+
+        .hero-stats {
+            position: relative;
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            margin-top: 60px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .stat-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--dimmed);
+            margin-top: 4px;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 72px 40px;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg2);
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::after {
+            content: '';
+            height: 1px;
+            width: 80px;
+            background: var(--border);
+        }
+
+        /* ── ACAST EPISODES ── */
+        #avsnitt .acast-wrapper {
+            max-width: 760px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        /* ── HOSTS ── */
+        #om-oss .hosts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 760px;
+            margin-top: 8px;
+        }
+
+        .host-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 28px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .host-photo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid var(--red);
+        }
+
+        .host-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .host-role {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+
+        .host-bio {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .host-ig {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--dimmed);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .host-ig:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ── HISTORY ── */
+        .history-text {
+            max-width: 600px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-top: 8px;
+        }
+
+        .history-text p+p {
+            margin-top: 16px;
+        }
+
+        /* ── QUOTE ── */
+        .quote-section {
+            padding: 72px 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        blockquote {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(30px, 5vw, 52px);
+            line-height: 1.15;
+            color: var(--text);
+            letter-spacing: 0.02em;
+            max-width: 680px;
+            margin: 0 auto 16px;
+        }
+
+        blockquote em {
+            color: var(--red);
+            font-style: normal;
+        }
+
+        cite {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--dimmed);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0a0a0a;
+            border-top: 1px solid var(--border);
+            padding: 36px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-logo span {
+            color: var(--red);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: var(--dimmed);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: rgba(240, 237, 230, 0.2);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            nav {
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 56px 20px;
+            }
+
+            footer {
+                padding: 28px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-stats {
+                gap: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#home" class="nav-logo">Aronsson <span>&</span> Park</a>
+        <ul class="nav-links">
+            <li><a href="#home">Hem</a></li>
+            <li><a href="#avsnitt">Avsnitt</a></li>
+            <li><a href="#om-oss">Om oss</a></li>
+            <li><a href="https://www.instagram.com/aronssonochpark/" target="_blank">Instagram</a></li>
+        </ul>
+        <a href="#avsnitt" class="nav-cta">Lyssna nu</a>
+    </nav>
+
+    <!-- HERO -->
+    <div id="home">
+        <div class="hero-grid"></div>
+        <div class="hero-fade"></div>
+
+        <img src="aronsson_park.png" alt="Aronsson & Park logga" class="hero-logo"
+            onerror="this.style.display='none'" />
+
+        <div class="hero-badge">🎙 Sommaravsnitt släpps imorgon 25/6! </div>
+
+        <h1>Ishockey.<br><em>Tennis.</em><br>Åsikter.</h1>
+
+        <p class="hero-sub">
+            En podcast om ishockey och tennis – utan filter. Emil Aronsson och Tim Park tar dig genom
+            säsongens hetaste snack.
+        </p>
+
+        <div class="hero-btns">
+            <a href="#avsnitt" class="btn-primary">▶ Lyssna på senaste</a>
+            <a href="https://www.instagram.com/aronssonochpark/" target="_blank" class="btn-secondary">Följ oss på
+                Instagram</a>
+        </div>
+
+        <div class="hero-stats">
+            <div>
+                <div class="stat-num">100+</div>
+                <div class="stat-label">Avsnitt</div>
+            </div>
+            <div>
+                <div class="stat-num">1000+</div>
+                <div class="stat-label">Åsikter</div>
+            </div>
+            <div>
+                <div class="stat-num">2021</div>
+                <div class="stat-label">Grundat</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUOTE -->
+    <div class="quote-section">
+        <blockquote>
+            "Ishockey och tennis – världens <em>bästa kombo</em>, om ni frågar oss."
+        </blockquote>
+        <cite>— Aronsson &amp; Park</cite>
+    </div>
+
+    <!-- AVSNITT (Acast full feed) -->
+    <section id="avsnitt">
+        <div class="section-label">Alla avsnitt</div>
+        <div class="acast-wrapper">
+            <iframe src="https://embed.acast.com/$/6004a4bc69c34c7ce9cdc803?feed=true&theme=dark&accent=e84c30"
+                width="100%" height="500" frameborder="0" scrolling="yes" allow="autoplay"
+                title="Aronsson & Park – alla avsnitt"></iframe>
+        </div>
+    </section>
+
+    <!-- OM OSS / HOSTS -->
+    <section id="om-oss">
+        <div class="section-label">Värdar</div>
+        <div class="hosts-grid">
+
+            <div class="host-card">
+                <img src="emil.png" alt="Emil Aronsson" class="host-photo"
+                    onerror="this.style.background='#e84c30';this.style.content='EA'" />
+                <div>
+                    <div class="host-name">Emil Aronsson</div>
+                    <div class="host-role">Tennis</div>
+                    <div class="host-bio">
+                        Tennisälskare med ett öga för taktik och ett hjärta för svensk sport på world stage.
+                    </div>
+                    <a href="https://www.instagram.com/emilaronssonprivat/" target="_blank" class="host-ig">
+                        📸 @emilaronssonprivat
+                    </a>
+                </div>
+            </div>
+
+            <div class="host-card">
+                <img src="tim.jpg" alt="Tim Park" class="host-photo" onerror="this.style.background='#e84c30'" />
+                <div>
+                    <div class="host-name">Tim Park</div>
+                    <div class="host-role">Ishockey</div>
+                    <div class="host-bio">
+                        Har följt hockey sedan han kunde stå på skridskor. Har starka åsikter om det mesta – och enligt
+                        honom själv alltid rätt. Hockeynörd eller bara en kille med mycket åsikter? Avgör själv.
+                    </div>
+                    <a href="https://www.instagram.com/timparkprivat/" target="_blank" class="host-ig">
+                        📸 @timparkprivat
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- History -->
+        <div style="margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);">
+            <div class="section-label">Vår historia</div>
+            <div class="history-text">
+                <p>
+                    Det som började som ett enkelt samtal över en kaffe om gårdagens matcher förvandlades
+                    snabbt till något större. Aronsson &amp; Park föddes ur passionen för sportens värld –
+                    där ishockeyns råa energi möter tennisens mentala schackspel.
+                </p>
+                <p>
+                    När analyserna blev för djupa och anekdoterna för många insåg vi att vi behövde en egen
+                    arena. Vi strävar inte bara efter att analysera sport – vi vill att det skall kännas som
+                    att vi pratar med dig, kära lyssnare. Oavsett vilket lag du håller på är du en del av vår gemenskap.
+                </p>
+                <p style="color: var(--red); font-size: 13px; letter-spacing: 0.06em;">Tillsammans sedan 2021</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Aronsson <span>&</span> Park</div>
+        <ul class="footer-links">
+            <li><a href="https://shows.acast.com/aronsson-park" target="_blank">Acast</a></li>
+            <li><a href="https://www.instagram.com/aronssonochpark/" target="_blank">Instagram</a></li>
+            <li><a href="#home">Tillbaka upp ↑</a></li>
+        </ul>
+        <div class="footer-copy">© 2026 Aronsson &amp; Park</div>
+    </footer>
+
+</body>
+
+</html>
