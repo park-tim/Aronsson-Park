@@ -22,26 +22,40 @@
 const kronikor = [
 
   {
-    id: "ishockey-och-tennis-varldens-basta-kombo",
-    rubrik: "Ishockey och tennis – världens bästa kombo?",
+    id: "sommarlov",
+    rubrik: "Äntligen sommarlov! ☀️",
     datum: "24 juni 2026",
-    forfatter: "Emil Aronsson & Tim Park",
-    intro: "Alla säger att man inte kan älska två sporter lika mycket. Vi bevisar motsatsen varannan vecka.",
+    forfatter: "Tim Park",
+    intro: "Vilket första halvår vi har fått uppleva som sportälskare! 🤩",
     bild: "aronsson_park.png",
     innehall: `
-      <p>Det är en fråga vi får hela tiden: varför just ishockey och tennis? De verkar ju inte ha något gemensamt. Men det är precis där folk har fel.</p>
+      <p>När vi nu närmar oss semestertider och summerar årets första sex månader är det svårt att inte känna tacksamhet över all den idrottsunderhållning vi bjudits på. Från svenska hockeyrinkar till NHL-arenor, från JVM-guld till tennisscenernas största dramatik – 2026 har redan levererat minnen för livet.</p>
 
-      <h2>Farten och tystnaden</h2>
-      <p>Ishockey är kaos i sin vackraste form. Pucken studsar, kropparna krockar och publikens dån fyller hela arenan. Tennis däremot är tyst. En serve, ett return, ett slag i taget. Ändå är spänningen identisk.</p>
+      <h2>🏒 Hockeyn har varit helt magisk</h2>
+      <p>Om vi börjar med hockeyn så har året bjudit på precis allt man kan önska sig. SHL har levererat dramatik, NHL-slutspelet har varit en känslomässig berg-och-dalbana och på den internationella scenen har vi fått uppleva både OS-hockey och världsklass från några av sportens största stjärnor.</p>
 
-      <p>Det är den mentala kampen som förenar dem. I båda sporterna kan allt vända på en sekund. En felpassning, ett dubbelfel – och plötsligt är matchen en annan.</p>
+      <p>Men kanske starkast av allt, JVM-guldet! Sverige stod äntligen överst på tronen igen och gjorde det med en generation spelare som känns oerhört spännande inför framtiden. Med namn som Ivar Stenberg, Anton Frondell och Viggo Björck i spetsen bjöds vi på en turnering som sent kommer att glömmas. Vilken hockeyfest. Vilken framtid svensk hockey har. 💛💙</p>
 
-      <h2>Varför vi startade podden</h2>
-      <p>Vi satt en kväll efter en lång hockeymatch och diskuterade varför Björn Borg var en bättre mentalspelare än de flesta hockeyspelare vi sett. Tre timmar senare hade vi fortfarande inte kommit överens – men vi hade kommit på att vi behövde en podcast.</p>
+      <h2>🎾 Tennisen fortsätter att fascinera</h2>
+      <p>På tennisbanorna fortsätter det att surras. Diskussionerna kring den nya generationens dominans har varit många, samtidigt som rivaliteten mellan sportens största namn fortsätter att skapa rubriker världen över. Carlos Alcaraz fortsätter att imponera, Jannik Sinner är ständigt i centrum och inför sommarens stora turneringar känns det som att varje match kan skriva ny historia</p>
 
-      <img src="aronsson_park.png" alt="Aronsson och Park">
+      <p> Precis som hockeyn har även tennisen visat varför den är en av världens mest älskade sporter – dramatik, känslor och oförutsägbarhet i världsklass. 🎾🔥 </p>
 
-      <p>Och resten, som de säger, är historia. Välkommen till vår värld.</p>
+      <h2>☀️ Tack för våren – vi ses i augusti!</h2>
+
+<p> Nu väntar förhoppningsvis lite välförtjänt ledighet, soliga dagar, grillkvällar och tid tillsammans med familj och vänner. 🌞🍓🍔 </p>
+
+<p> Stort tack till alla er som har läst, lyssnat, kommenterat och följt med under årets första månader. </p>
+
+<p> Jag önskar er alla en riktigt fin sommar – så ses vi igen den <strong>27 augusti</strong> för en ny, spännande och händelserik höst! 🍂🏒🎾 </p>
+
+<p> Tills dess – njut av sommaren och ta hand om er & kärleken! ❤️ </p>
+
+
+
+      <img src="Bilder/schrimp.jpg" alt="Aronsson och Park">
+
+    
     `
   }
 
