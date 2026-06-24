@@ -444,78 +444,6 @@
       color: rgba(240, 237, 230, 0.2);
     }
 
-    /* ── NYHETER ── */
-    #nyheter .nyheter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-      max-width: 960px;
-      margin-top: 8px;
-    }
-
-    .nyhet-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.2s;
-    }
-
-    .nyhet-card:hover {
-      border-color: rgba(232, 76, 48, 0.4);
-    }
-
-    .nyhet-bild {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .nyhet-bild-placeholder {
-      width: 100%;
-      height: 8px;
-      background: var(--red);
-    }
-
-    .nyhet-body {
-      padding: 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .nyhet-datum {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 10px;
-    }
-
-    .nyhet-rubrik {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.02em;
-      color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-
-    .nyhet-text {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .nyheter-tom {
-      color: var(--muted);
-      font-size: 14px;
-      padding: 20px 0;
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       nav {
@@ -550,7 +478,6 @@
     <a href="#home" class="nav-logo">Aronsson <span>&</span> Park</a>
     <ul class="nav-links">
       <li><a href="#home">Hem</a></li>
-      <li><a href="#nyheter">Nyheter</a></li>
       <li><a href="#avsnitt">Avsnitt</a></li>
       <li><a href="#om-oss">Om oss</a></li>
       <li><a href="https://www.instagram.com/aronssonochpark/" target="_blank">Instagram</a></li>
@@ -565,12 +492,12 @@
 
     <img src="aronsson_park.png" alt="Aronsson & Park logga" class="hero-logo" onerror="this.style.display='none'" />
 
-    <div class="hero-badge">🎙 Ny säsong ute nu</div>
+    <div class="hero-badge">🎙 Sommaravsnitt släpps imorgon 25/6! </div>
 
     <h1>Ishockey.<br><em>Tennis.</em><br>Åsikter.</h1>
 
     <p class="hero-sub">
-      En podcast om svensk sport – utan filter. Emil Aronsson och Tim Park tar dig genom
+      En podcast om ishockey och tennis – utan filter. Emil Aronsson och Tim Park tar dig genom
       säsongens hetaste snack.
     </p>
 
@@ -582,12 +509,12 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-num">124+</div>
+        <div class="stat-num">100+</div>
         <div class="stat-label">Avsnitt</div>
       </div>
       <div>
-        <div class="stat-num">2</div>
-        <div class="stat-label">Sporter</div>
+        <div class="stat-num">1000+</div>
+        <div class="stat-label">Åsikter</div>
       </div>
       <div>
         <div class="stat-num">2021</div>
@@ -603,14 +530,6 @@
     </blockquote>
     <cite>— Aronsson &amp; Park</cite>
   </div>
-
-  <!-- NYHETER -->
-  <section id="nyheter">
-    <div class="section-label">Nyheter</div>
-    <div class="nyheter-grid" id="nyheter-grid">
-      <p class="nyheter-tom">Laddar nyheter...</p>
-    </div>
-  </section>
 
   <!-- AVSNITT (Acast full feed) -->
   <section id="avsnitt">
@@ -631,9 +550,9 @@
           onerror="this.style.background='#e84c30';this.style.content='EA'" />
         <div>
           <div class="host-name">Emil Aronsson</div>
-          <div class="host-role">Ishockey</div>
+          <div class="host-role">Tennis</div>
           <div class="host-bio">
-            Har följt hockeyns in och outs sedan han kunde åka skridskor. Stark åsikt om allt – och det mesta är rätt.
+            Tennisälskare med ett öga för taktik och ett hjärta för svensk sport på world stage.
           </div>
           <a href="https://www.instagram.com/emilaronssonprivat/" target="_blank" class="host-ig">
             📸 @emilaronssonprivat
@@ -645,9 +564,10 @@
         <img src="tim.jpg" alt="Tim Park" class="host-photo" onerror="this.style.background='#e84c30'" />
         <div>
           <div class="host-name">Tim Park</div>
-          <div class="host-role">Tennis</div>
+          <div class="host-role">Ishockey</div>
           <div class="host-bio">
-            Tennisälskare med ett öga för taktik och ett hjärta för svensk sport på world stage.
+            Har följt hockey sedan han kunde stå på skridskor. Har starka åsikter om det mesta – och enligt
+            honom själv alltid rätt. Hockeynörd eller bara en kille med mycket åsikter? Avgör själv.
           </div>
           <a href="https://www.instagram.com/timparkprivat/" target="_blank" class="host-ig">
             📸 @timparkprivat
@@ -686,27 +606,6 @@
     </ul>
     <div class="footer-copy">© 2026 Aronsson &amp; Park</div>
   </footer>
-  <script src="nyheter.js"></script>
-  <script>
-    const grid = document.getElementById('nyheter-grid');
-    if (typeof nyheter !== 'undefined' && nyheter.length > 0) {
-      grid.innerHTML = nyheter.map(n => `
-        <article class="nyhet-card">
-          ${n.bild
-          ? `<img src="${n.bild}" alt="${n.rubrik}" class="nyhet-bild" onerror="this.outerHTML='<div class=nyhet-bild-placeholder></div>'">`
-          : '<div class="nyhet-bild-placeholder"></div>'
-        }
-          <div class="nyhet-body">
-            <div class="nyhet-datum">${n.datum}</div>
-            <div class="nyhet-rubrik">${n.rubrik}</div>
-            <p class="nyhet-text">${n.text}</p>
-          </div>
-        </article>
-      `).join('');
-    } else {
-      grid.innerHTML = '<p class="nyheter-tom">Inga nyheter ännu – kom tillbaka snart!</p>';
-    }
-  </script>
 
 </body>
 
