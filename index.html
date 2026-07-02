@@ -2,852 +2,866 @@
 <html lang="sv">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aronsson & Park – Podcast</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --red: #e84c30;
-      --bg: #0a0a0a;
-      --bg2: #111;
-      --bg3: #161616;
-      --text: #f0ede6;
-      --muted: rgba(240, 237, 230, 0.5);
-      --dimmed: rgba(240, 237, 230, 0.2);
-      --border: rgba(255, 255, 255, 0.07);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 10, 10, 0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 60px;
-    }
-
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav-logo span {
-      color: var(--red);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--dimmed);
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      background: var(--red);
-      color: #fff;
-      border: none;
-      padding: 8px 20px;
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .nav-cta:hover {
-      opacity: 0.85;
-    }
-
-    /* ── HAMBURGER ── */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      transition: all 0.3s;
-    }
-
-    .nav-hamburger.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .nav-hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-hamburger.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    .nav-mobile {
-      display: none;
-      flex-direction: column;
-      background: rgba(10, 10, 10, 0.99);
-      border-bottom: 1px solid var(--border);
-      padding: 8px 24px 20px;
-    }
-
-    .nav-mobile.open {
-      display: flex;
-    }
-
-    .nav-mobile a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s;
-    }
-
-    .nav-mobile a:last-child {
-      border-bottom: none;
-    }
-
-    .nav-mobile a:hover {
-      color: var(--red);
-    }
-
-    /* ── HERO ── */
-    #home {
-      min-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 24px 72px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(232, 76, 48, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(232, 76, 48, 0.05) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-
-    .hero-fade {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, transparent 20%, var(--bg) 75%);
-      pointer-events: none;
-    }
-
-    .hero-logo {
-      position: relative;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(232, 76, 48, 0.6);
-      margin-bottom: 32px;
-    }
-
-    .hero-badge {
-      position: relative;
-      display: inline-block;
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--red);
-      border: 1px solid rgba(232, 76, 48, 0.3);
-      padding: 5px 14px;
-      border-radius: 2px;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      position: relative;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(56px, 11vw, 104px);
-      line-height: 0.92;
-      letter-spacing: 0.02em;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-
-    h1 em {
-      color: var(--red);
-      font-style: normal;
-    }
-
-    .hero-sub {
-      position: relative;
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 440px;
-      margin: 0 auto 40px;
-      line-height: 1.75;
-    }
-
-    .hero-btns {
-      position: relative;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--red);
-      color: #fff;
-      border: none;
-      padding: 13px 28px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: 2px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: opacity 0.2s;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.85;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 13px 28px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      border-radius: 2px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .btn-ghost:hover {
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .hero-stats {
-      position: relative;
-      display: flex;
-      gap: 56px;
-      justify-content: center;
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 38px;
-      color: var(--text);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--dimmed);
-      margin-top: 6px;
-    }
-
-    /* ── DIVIDER ── */
-    .red-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--red), transparent);
-      opacity: 0.4;
-    }
-
-    /* ── SECTION BASE ── */
-    .ap-section {
-      padding: 72px 40px;
-    }
-
-    .ap-section.alt {
-      background: var(--bg2);
-    }
-
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .section-label::after {
-      content: '';
-      height: 1px;
-      flex: 1;
-      max-width: 60px;
-      background: var(--border);
-    }
-
-    /* ── SENASTE AVSNITT ── */
-    #senaste {
-      padding: 48px 40px;
-      background: var(--bg2);
-    }
-
-    .senaste-inner {
-      max-width: 720px;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    /* ── ALLA AVSNITT ── */
-    .acast-wrapper {
-      max-width: 720px;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    /* ── NYHETER & KRÖNIKOR GRID ── */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-    }
-
-    /* nyhet */
-    .nyhet-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.25s;
-    }
-
-    .nyhet-card:hover {
-      border-color: rgba(232, 76, 48, 0.35);
-    }
-
-    .nyhet-bild {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .nyhet-bild-placeholder {
-      width: 100%;
-      height: 3px;
-      background: var(--red);
-    }
-
-    .nyhet-body {
-      padding: 20px;
-      flex: 1;
-    }
-
-    .nyhet-datum {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 8px;
-    }
-
-    .nyhet-rubrik {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 0.02em;
-      color: var(--text);
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    .nyhet-text {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* krönika */
-    .kronika-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-
-    .kronika-card:hover {
-      border-color: rgba(232, 76, 48, 0.45);
-      transform: translateY(-2px);
-    }
-
-    .kronika-card-bild {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .kronika-card-toppstripe {
-      width: 100%;
-      height: 3px;
-      background: var(--red);
-    }
-
-    .kronika-card-body {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .kronika-card-meta {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 8px;
-    }
-
-    .kronika-card-rubrik {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 0.02em;
-      color: var(--text);
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    .kronika-card-intro {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      flex: 1;
-      margin-bottom: 16px;
-    }
-
-    .kronika-card-las {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--red);
-    }
-
-    .tom-text {
-      color: var(--dimmed);
-      font-size: 14px;
-      padding: 8px 0;
-    }
-
-    /* ── HOSTS ── */
-    .hosts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      max-width: 720px;
-    }
-
-    .host-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 24px;
-      display: flex;
-      gap: 18px;
-      align-items: flex-start;
-    }
-
-    .host-photo {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      border: 2px solid rgba(232, 76, 48, 0.5);
-    }
-
-    .host-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-
-    .host-role {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 10px;
-    }
-
-    .host-bio {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-
-    .host-ig {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--dimmed);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .host-ig:hover {
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    /* ── HISTORY ── */
-    .history-text {
-      max-width: 560px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.85;
-      margin-top: 8px;
-    }
-
-    .history-text p+p {
-      margin-top: 14px;
-    }
-
-    .history-since {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-top: 20px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 28px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      letter-spacing: 0.08em;
-      color: var(--dimmed);
-    }
-
-    .footer-logo span {
-      color: var(--red);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 11px;
-      color: var(--dimmed);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--red);
-    }
-
-    .footer-copy {
-      font-size: 11px;
-      color: rgba(240, 237, 230, 0.15);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      nav {
-        padding: 0 20px;
-      }
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .nav-hamburger {
-        display: flex;
-      }
-
-      .ap-section,
-      #senaste {
-        padding: 52px 20px;
-      }
-
-      footer {
-        padding: 24px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-stats {
-        gap: 24px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aronsson & Park – Podcast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --red: #e84c30;
+            --bg: #0a0a0a;
+            --bg2: #111;
+            --bg3: #161616;
+            --text: #f0ede6;
+            --muted: rgba(240, 237, 230, 0.5);
+            --dimmed: rgba(240, 237, 230, 0.2);
+            --border: rgba(255, 255, 255, 0.07);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 0.08em;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dimmed);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+
+        /* ── HAMBURGER ── */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        .nav-hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-mobile {
+            display: none;
+            flex-direction: column;
+            background: rgba(10, 10, 10, 0.99);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 24px 20px;
+        }
+
+        .nav-mobile.open {
+            display: flex;
+        }
+
+        .nav-mobile a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s;
+        }
+
+        .nav-mobile a:last-child {
+            border-bottom: none;
+        }
+
+        .nav-mobile a:hover {
+            color: var(--red);
+        }
+
+        /* ── HERO ── */
+        #home {
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px 72px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(232, 76, 48, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(232, 76, 48, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-fade {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 20%, var(--bg) 75%);
+            pointer-events: none;
+        }
+
+        .hero-logo {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(232, 76, 48, 0.6);
+            margin-bottom: 32px;
+        }
+
+        .hero-badge {
+            position: relative;
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--red);
+            border: 1px solid rgba(232, 76, 48, 0.3);
+            padding: 5px 14px;
+            border-radius: 2px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            position: relative;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(56px, 11vw, 104px);
+            line-height: 0.92;
+            letter-spacing: 0.02em;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        h1 em {
+            color: var(--red);
+            font-style: normal;
+        }
+
+        .hero-sub {
+            position: relative;
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 440px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .hero-btns {
+            position: relative;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 13px 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 13px 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stats {
+            position: relative;
+            display: flex;
+            gap: 56px;
+            justify-content: center;
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .stat-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 38px;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--dimmed);
+            margin-top: 6px;
+        }
+
+        /* ── DIVIDER ── */
+        .red-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+            opacity: 0.4;
+        }
+
+        /* ── SECTION BASE ── */
+        .ap-section {
+            padding: 72px 40px;
+        }
+
+        .ap-section.alt {
+            background: var(--bg2);
+        }
+
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .section-label::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            max-width: 60px;
+            background: var(--border);
+        }
+
+        /* ── SENASTE AVSNITT ── */
+        #senaste {
+            padding: 48px 40px;
+            background: var(--bg2);
+        }
+
+        .senaste-inner {
+            max-width: 720px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        /* ── ALLA AVSNITT ── */
+        .acast-wrapper {
+            max-width: 720px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        /* ── NYHETER & KRÖNIKOR GRID ── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+        }
+
+        /* nyhet */
+        .nyhet-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.25s;
+        }
+
+        .nyhet-card:hover {
+            border-color: rgba(232, 76, 48, 0.35);
+        }
+
+        .nyhet-bild {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nyhet-bild-placeholder {
+            width: 100%;
+            height: 3px;
+            background: var(--red);
+        }
+
+        .nyhet-body {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .nyhet-datum {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+
+        .nyhet-rubrik {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 0.02em;
+            color: var(--text);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .nyhet-text {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* krönika */
+        .kronika-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .kronika-card:hover {
+            border-color: rgba(232, 76, 48, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .kronika-card-bild {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .kronika-card-toppstripe {
+            width: 100%;
+            height: 3px;
+            background: var(--red);
+        }
+
+        .kronika-card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kronika-card-meta {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+
+        .kronika-card-rubrik {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 0.02em;
+            color: var(--text);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .kronika-card-intro {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 16px;
+        }
+
+        .kronika-card-las {
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        .tom-text {
+            color: var(--dimmed);
+            font-size: 14px;
+            padding: 8px 0;
+        }
+
+        /* ── HOSTS ── */
+        .hosts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 720px;
+        }
+
+        .host-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 24px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .host-photo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid rgba(232, 76, 48, 0.5);
+        }
+
+        .host-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .host-role {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+
+        .host-bio {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .host-ig {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--dimmed);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .host-ig:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ── HISTORY ── */
+        .history-text {
+            max-width: 560px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.85;
+            margin-top: 8px;
+        }
+
+        .history-text p+p {
+            margin-top: 14px;
+        }
+
+        .history-since {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-top: 20px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 28px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px;
+            letter-spacing: 0.08em;
+            color: var(--dimmed);
+        }
+
+        .footer-logo span {
+            color: var(--red);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 11px;
+            color: var(--dimmed);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: rgba(240, 237, 230, 0.15);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 680px) {
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .ap-section,
+            #senaste {
+                padding: 52px 20px;
+            }
+
+            footer {
+                padding: 24px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#home" class="nav-logo">Aronsson <span>&</span> Park</a>
-    <ul class="nav-links">
-      <li><a href="#home">Hem</a></li>
-      <li><a href="#avsnitt">Avsnitt</a></li>
-      <li><a href="#nyheter">Nyheter</a></li>
-      <li><a href="#kronikor">Krönikor</a></li>
-      <li><a href="#om-oss">Om oss</a></li>
-    </ul>
-    <a href="#senaste" class="nav-cta">▶ Lyssna</a>
-    <button class="nav-hamburger" id="hamburger" aria-label="Meny">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="#home" onclick="closeMobile()">Hem</a>
-    <a href="#avsnitt" onclick="closeMobile()">Avsnitt</a>
-    <a href="#nyheter" onclick="closeMobile()">Nyheter</a>
-    <a href="#kronikor" onclick="closeMobile()">Krönikor</a>
-    <a href="#om-oss" onclick="closeMobile()">Om oss</a>
-    <a href="https://www.instagram.com/aronssonochpark/" target="_blank">Instagram</a>
-  </div>
-
-  <!-- HERO -->
-  <div id="home">
-    <div class="hero-grid"></div>
-    <div class="hero-fade"></div>
-    <img src="aronsson_park.png" alt="Aronsson & Park" class="hero-logo" onerror="this.style.display='none'" />
-    <div class="hero-badge">🎙 Sommaravsnitt släpps imorgon 25/6</div>
-    <h1>Ishockey.<br><em>Tennis.</em><br>Åsikter.</h1>
-    <p class="hero-sub">En podcast om ishockey och tennis – utan filter. Emil Aronsson och Tim Park tar dig genom
-      säsongens hetaste snack.</p>
-    <div class="hero-btns">
-      <a href="#senaste" class="btn-primary">▶ Senaste avsnittet</a>
-      <a href="https://www.instagram.com/aronssonochpark/" target="_blank" class="btn-ghost">Instagram</a>
+    <!-- NAV -->
+    <nav>
+        <a href="#home" class="nav-logo">Aronsson <span>&</span> Park</a>
+        <ul class="nav-links">
+            <li><a href="#home">Hem</a></li>
+            <li><a href="#avsnitt">Avsnitt</a></li>
+            <li><a href="#nyheter">Nyheter</a></li>
+            <li><a href="#kronikor">Krönikor</a></li>
+            <li><a href="#om-oss">Om oss</a></li>
+        </ul>
+        <a href="#senaste" class="nav-cta">▶ Lyssna</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Meny">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+        <a href="#home" onclick="closeMobile()">Hem</a>
+        <a href="#avsnitt" onclick="closeMobile()">Avsnitt</a>
+        <a href="#nyheter" onclick="closeMobile()">Nyheter</a>
+        <a href="#kronikor" onclick="closeMobile()">Krönikor</a>
+        <a href="#om-oss" onclick="closeMobile()">Om oss</a>
+        <a href="https://www.instagram.com/aronssonochpark/" target="_blank">Instagram</a>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-num">100+</div>
-        <div class="stat-label">Avsnitt</div>
-      </div>
-      <div>
-        <div class="stat-num">1000+</div>
-        <div class="stat-label">Åsikter</div>
-      </div>
-      <div>
-        <div class="stat-num">2021</div>
-        <div class="stat-label">Grundat</div>
-      </div>
-    </div>
-  </div>
 
-  <div class="red-line"></div>
-
-  <!-- SENASTE AVSNITTET -->
-  <div id="senaste" class="ap-section alt">
-    <div class="section-label">Senaste avsnittet</div>
-    <div class="senaste-inner">
-      <iframe src="https://embed.acast.com/$/6004a4bc69c34c7ce9cdc803?theme=dark&accent=e84c30" width="100%"
-        height="180" frameborder="0" allow="autoplay" title="Senaste avsnittet"></iframe>
-    </div>
-  </div>
-
-  <!-- ALLA AVSNITT -->
-  <div id="avsnitt" class="ap-section">
-    <div class="section-label">Alla avsnitt</div>
-    <div class="acast-wrapper">
-      <iframe src="https://embed.acast.com/$/6004a4bc69c34c7ce9cdc803?feed=true&theme=dark&accent=e84c30" width="100%"
-        height="480" frameborder="0" scrolling="yes" allow="autoplay" title="Aronsson & Park – alla avsnitt"></iframe>
-    </div>
-  </div>
-
-  <div class="red-line"></div>
-
-  <!-- NYHETER -->
-  <div id="nyheter" class="ap-section alt">
-    <div class="section-label">Nyheter</div>
-    <div class="card-grid" id="nyheter-grid">
-      <p class="tom-text">Laddar nyheter...</p>
-    </div>
-  </div>
-
-  <!-- KRÖNIKOR -->
-  <div id="kronikor" class="ap-section">
-    <div class="section-label">Krönikor</div>
-    <div class="card-grid" id="kronikor-grid">
-      <p class="tom-text">Laddar krönikor...</p>
-    </div>
-  </div>
-
-  <div class="red-line"></div>
-
-  <!-- OM OSS -->
-  <div id="om-oss" class="ap-section alt">
-    <div class="section-label">Värdar</div>
-    <div class="hosts-grid">
-      <div class="host-card">
-        <img src="emil.png" alt="Emil Aronsson" class="host-photo" onerror="this.style.background='#1a1a1a'" />
-        <div>
-          <div class="host-name">Emil Aronsson</div>
-          <div class="host-role">Tennis</div>
-          <div class="host-bio">Tennisälskare med ett öga för taktik och ett hjärta för svensk sport på world stage.
-          </div>
-          <a href="https://www.instagram.com/emilaronssonprivat/" target="_blank" class="host-ig">📸
-            @emilaronssonprivat</a>
+    <!-- HERO -->
+    <div id="home">
+        <div class="hero-grid"></div>
+        <div class="hero-fade"></div>
+        <img src="aronsson_park.png" alt="Aronsson & Park" class="hero-logo" onerror="this.style.display='none'" />
+        <div class="hero-badge">🎙 Sommaravsnitt ute nu ! </div>
+        <h1>Ishockey.<br><em>Tennis.</em><br>Åsikter.</h1>
+        <p class="hero-sub">En podcast om ishockey och tennis – utan filter. Emil Aronsson och Tim Park tar dig genom
+            säsongens hetaste snack.</p>
+        <div class="hero-btns">
+            <a href="#senaste" class="btn-primary">▶ Senaste avsnittet</a>
+            <a href="https://www.instagram.com/aronssonochpark/" target="_blank" class="btn-ghost">Instagram</a>
         </div>
-      </div>
-      <div class="host-card">
-        <img src="tim.jpg" alt="Tim Park" class="host-photo" onerror="this.style.background='#1a1a1a'" />
-        <div>
-          <div class="host-name">Tim Park</div>
-          <div class="host-role">Ishockey</div>
-          <div class="host-bio">Har följt hockey sedan han kunde stå på skridskor. Har starka åsikter om det mesta – och
-            enligt honom själv alltid rätt.</div>
-          <a href="https://www.instagram.com/timparkprivat/" target="_blank" class="host-ig">📸 @timparkprivat</a>
+        <div class="hero-stats">
+            <div>
+                <div class="stat-num">100+</div>
+                <div class="stat-label">Avsnitt</div>
+            </div>
+            <div>
+                <div class="stat-num">1000+</div>
+                <div class="stat-label">Åsikter</div>
+            </div>
+            <div>
+                <div class="stat-num">2021</div>
+                <div class="stat-label">Grundat</div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div style="margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 720px;">
-      <div class="section-label">Vår historia</div>
-      <div class="history-text">
-        <p>Det som började som ett enkelt samtal över en kaffe om gårdagens matcher förvandlades snabbt till något
-          större. Aronsson &amp; Park föddes ur passionen för sportens värld – där ishockeyns råa energi möter tennisens
-          mentala schackspel.</p>
-        <p>När analyserna blev för djupa och anekdoterna för många insåg vi att vi behövde en egen arena. Vi strävar
-          inte bara efter att analysera sport – vi vill att det skall kännas som att vi pratar med dig, kära lyssnare.
-          Oavsett vilket lag du håller på är du en del av vår gemenskap.</p>
-        <p class="history-since">Tillsammans sedan 2021</p>
-      </div>
+    <div class="red-line"></div>
+
+    <!-- SENASTE AVSNITTET -->
+    <div id="senaste" class="ap-section alt">
+        <div class="section-label">Senaste avsnittet</div>
+        <div class="senaste-inner">
+            <iframe src="https://embed.acast.com/$/6004a4bc69c34c7ce9cdc803?theme=dark&accent=e84c30" width="100%"
+                height="180" frameborder="0" allow="autoplay" title="Senaste avsnittet"></iframe>
+        </div>
     </div>
-  </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Aronsson <span>&</span> Park</div>
-    <ul class="footer-links">
-      <li><a href="https://shows.acast.com/aronsson-park" target="_blank">Acast</a></li>
-      <li><a href="https://www.instagram.com/aronssonochpark/" target="_blank">Instagram</a></li>
-      <li><a href="#home">↑ Tillbaka upp</a></li>
-    </ul>
-    <div class="footer-copy">© 2026 Aronsson & Park</div>
-  </footer>
+    <!-- ALLA AVSNITT -->
+    <div id="avsnitt" class="ap-section">
+        <div class="section-label">Alla avsnitt</div>
+        <div class="acast-wrapper">
+            <iframe src="https://embed.acast.com/$/6004a4bc69c34c7ce9cdc803?feed=true&theme=dark&accent=e84c30"
+                width="100%" height="480" frameborder="0" scrolling="yes" allow="autoplay"
+                title="Aronsson & Park – alla avsnitt"></iframe>
+        </div>
+    </div>
 
-  <script src="kronikor.js"></script>
-  <script src="nyheter.js"></script>
-  <script>
-    // ── Hamburger ──
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('nav-mobile');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navMobile.classList.toggle('open');
-    });
-    function closeMobile() {
-      hamburger.classList.remove('open');
-      navMobile.classList.remove('open');
-    }
+    <div class="red-line"></div>
 
-    // ── Nyheter ──
-    const nyhetGrid = document.getElementById('nyheter-grid');
-    if (typeof nyheter !== 'undefined' && nyheter.length > 0) {
-      nyhetGrid.innerHTML = nyheter.map(n => `
+    <!-- NYHETER -->
+    <div id="nyheter" class="ap-section alt">
+        <div class="section-label">Nyheter</div>
+        <div class="card-grid" id="nyheter-grid">
+            <p class="tom-text">Laddar nyheter...</p>
+        </div>
+    </div>
+
+    <!-- KRÖNIKOR -->
+    <div id="kronikor" class="ap-section">
+        <div class="section-label">Krönikor</div>
+        <div class="card-grid" id="kronikor-grid">
+            <p class="tom-text">Laddar krönikor...</p>
+        </div>
+    </div>
+
+    <div class="red-line"></div>
+
+    <!-- OM OSS -->
+    <div id="om-oss" class="ap-section alt">
+        <div class="section-label">Värdar</div>
+        <div class="hosts-grid">
+            <div class="host-card">
+                <img src="emil.png" alt="Emil Aronsson" class="host-photo" onerror="this.style.background='#1a1a1a'" />
+                <div>
+                    <div class="host-name">Emil Aronsson</div>
+                    <div class="host-role">Tennis</div>
+                    <div class="host-bio">Tennisälskare med ett öga för taktik och ett hjärta för svensk sport på world
+                        stage.
+                    </div>
+                    <a href="https://www.instagram.com/emilaronssonprivat/" target="_blank" class="host-ig">📸
+                        @emilaronssonprivat</a>
+                </div>
+            </div>
+            <div class="host-card">
+                <img src="tim.jpg" alt="Tim Park" class="host-photo" onerror="this.style.background='#1a1a1a'" />
+                <div>
+                    <div class="host-name">Tim Park</div>
+                    <div class="host-role">Ishockey</div>
+                    <div class="host-bio">Har följt hockey sedan han kunde stå på skridskor. Har starka åsikter om det
+                        mesta – och
+                        enligt honom själv alltid rätt.</div>
+                    <a href="https://www.instagram.com/timparkprivat/" target="_blank" class="host-ig">📸
+                        @timparkprivat</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 720px;">
+            <div class="section-label">Vår historia</div>
+            <div class="history-text">
+                <p> Det som började som ett enkelt samtal över en kopp kaffe om gårdagens matcher utvecklades snabbt
+                    till något mycket större. </p>
+
+                <p> Aronsson &amp; Park föddes ur en genuin passion för sportens värld – där ishockeyns fart, känslor
+                    och dramatik möter tennisens strategi, psykologi och precision. Genom åren har otaliga diskussioner,
+                    analyser och skratt lett fram till en podd där sporten alltid står i centrum. </p>
+
+                <p> Vår ambition är inte bara att prata om resultat och tabeller. Vi vill förmedla känslan bakom
+                    ögonblicken, berättelserna bakom rubrikerna och perspektiven som gör våra respektive sporter så
+                    fascinerande. Framför allt vill vi att det ska kännas som att du sitter med vid bordet och tar del
+                    av samtalet. </p>
+
+                <p> Oavsett om ditt hjärta klappar för NHL, SHL, ATP-touren eller något däremellan är du en del av vår
+                    gemenskap. </p>
+
+                <p> Välkommen till Aronsson &amp; Park. </p>
+                <p class="history-since">Tillsammans sedan 2021 🎧</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Aronsson <span>&</span> Park</div>
+        <ul class="footer-links">
+            <li><a href="https://shows.acast.com/aronsson-park" target="_blank">Acast</a></li>
+            <li><a href="https://www.instagram.com/aronssonochpark/" target="_blank">Instagram</a></li>
+            <li><a href="#home">↑ Tillbaka upp</a></li>
+        </ul>
+        <div class="footer-copy">© 2026 Aronsson & Park</div>
+    </footer>
+
+    <script src="kronikor.js"></script>
+    <script src="nyheter.js"></script>
+    <script>
+        // ── Hamburger ──
+        const hamburger = document.getElementById('hamburger');
+        const navMobile = document.getElementById('nav-mobile');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            navMobile.classList.toggle('open');
+        });
+        function closeMobile() {
+            hamburger.classList.remove('open');
+            navMobile.classList.remove('open');
+        }
+
+        // ── Nyheter ──
+        const nyhetGrid = document.getElementById('nyheter-grid');
+        if (typeof nyheter !== 'undefined' && nyheter.length > 0) {
+            nyhetGrid.innerHTML = nyheter.map(n => `
         <article class="nyhet-card">
           ${n.bild ? `<img src="${n.bild}" alt="${n.rubrik}" class="nyhet-bild" onerror="this.outerHTML='<div class=nyhet-bild-placeholder></div>'">` : '<div class="nyhet-bild-placeholder"></div>'}
           <div class="nyhet-body">
@@ -856,14 +870,14 @@
             <p class="nyhet-text">${n.text}</p>
           </div>
         </article>`).join('');
-    } else {
-      nyhetGrid.innerHTML = '<p class="tom-text">Inga nyheter ännu.</p>';
-    }
+        } else {
+            nyhetGrid.innerHTML = '<p class="tom-text">Inga nyheter ännu.</p>';
+        }
 
-    // ── Krönikor ──
-    const kronikaGrid = document.getElementById('kronikor-grid');
-    if (typeof kronikor !== 'undefined' && kronikor.length > 0) {
-      kronikaGrid.innerHTML = kronikor.map(k => `
+        // ── Krönikor ──
+        const kronikaGrid = document.getElementById('kronikor-grid');
+        if (typeof kronikor !== 'undefined' && kronikor.length > 0) {
+            kronikaGrid.innerHTML = kronikor.map(k => `
         <a class="kronika-card" href="kronika.html?id=${k.id}">
           ${k.bild ? `<img src="${k.bild}" alt="${k.rubrik}" class="kronika-card-bild" onerror="this.outerHTML='<div class=kronika-card-toppstripe></div>'">` : '<div class="kronika-card-toppstripe"></div>'}
           <div class="kronika-card-body">
@@ -873,10 +887,10 @@
             <span class="kronika-card-las">Läs mer →</span>
           </div>
         </a>`).join('');
-    } else {
-      kronikaGrid.innerHTML = '<p class="tom-text">Inga krönikor ännu.</p>';
-    }
-  </script>
+        } else {
+            kronikaGrid.innerHTML = '<p class="tom-text">Inga krönikor ännu.</p>';
+        }
+    </script>
 </body>
 
 </html>
