@@ -18,18 +18,24 @@
 const nyheter = [
 
   {
+    rubrik: "Aronsson &amp; Park tar sommarledigt! ☀️ ",
+    datum: "7 juli 2026",
+    text: "Nu tar vi en välförtjänt paus över sommaren efter en intensiv säsong fylld med hockey, tennis och massor av härliga diskussioner. 🎙️🏒🎾 <p>Ett stort <strong>tack</strong> till alla er som har lyssnat, kommenterat och följt podden under året. Ert stöd betyder enormt mycket! ❤️</p> <p> <strong>Vi är tillbaka med nya avsnitt den 27 augusti 2026.</strong> 🚀</p> <p> Tills dess önskar vi er en fantastisk sommar – så hörs vi snart igen! 🌴☀️</p>",
+    bild: ""
+  },
+
+
+
+
+
+  {
     rubrik: "Välkommen till vår nya hemsida! 🎉",
     datum: "24 juni 2026",
     text: "Vi har äntligen fått en snygg hemsida! Här kommer vi dela nyheter, tankar och allt annat vi inte hinner ta upp i podden. Följ med på resan!",
     bild: ""
   },
 
-  {
-    rubrik: "Aronsson &amp; Park tar sommarledigt! ☀️ ",
-    datum: "7 juli 2026",
-    text: "Nu tar vi en välförtjänt paus över sommaren efter en intensiv säsong fylld med hockey, tennis och massor av härliga diskussioner. 🎙️🏒🎾 Ett stort <strong>tack</strong> till alla er som har lyssnat, kommenterat och följt podden under året. Ert stöd betyder enormt mycket! ❤️ <strong>Vi är tillbaka med nya avsnitt den 27 augusti 2026.</strong> 🚀 Tills dess önskar vi er en fantastisk sommar – så hörs vi snart igen! 🌴☀️",
-    bild: ""
-  },
+
   // ← Lägg till fler inlägg ovanför den här raden
 
 ];
