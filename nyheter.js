@@ -18,6 +18,14 @@
 const nyheter = [
 
   {
+    rubrik: "🎙️ Vi är tillbaka efter sommaren! ☀️🏒🎾",
+    datum: "7 juli 2026",
+    text: "Sommaren är över, hockeyn är tillbaka och Taktisk Icing rullar igång igen. Efter några veckors välbehövlig paus har vi laddat om – och det finns en hel del kul i pipen framöver. 🔥Nya avsnitt, hockey, tennis, snack, skratt och förhoppningsvis en och annan het take. 😎Häng med oss på resan – nu kör vi! 🎧🏒🎾❤️ ",
+    bild: "tent_aronssonpark.png"
+  },
+
+
+  {
     rubrik: "Aronsson &amp; Park tar sommarledigt! ☀️ ",
     datum: "7 juli 2026",
     text: "Nu tar vi en välförtjänt paus över sommaren efter en intensiv säsong fylld med hockey, tennis och massor av härliga diskussioner. 🎙️🏒🎾Ett stort <strong>tack</strong> till alla er som har lyssnat, kommenterat och följt podden under året. Ert stöd betyder enormt mycket! ❤️<strong>Vi är tillbaka med nya avsnitt den 27 augusti 2026.</strong> 🚀Tills dess önskar vi er en fantastisk sommar – så hörs vi snart igen! 🌴☀️",
