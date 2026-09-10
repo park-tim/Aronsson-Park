@@ -27,7 +27,7 @@ const kronikor = [
     datum: "24 juni 2026",
     forfatter: "Tim Park",
     intro: "Vilket första halvår vi har fått uppleva som sportälskare! 🤩",
-    bild: "aronsson_park.png",
+    bild: "Park_new.png",
     innehall: `
       <p>När vi nu närmar oss semestertider och summerar årets första sex månader är det svårt att inte känna tacksamhet över all den idrottsunderhållning vi bjudits på. Från svenska hockeyrinkar till NHL-arenor, från JVM-guld till tennisscenernas största dramatik – 2026 har redan levererat minnen för livet.</p>
 
